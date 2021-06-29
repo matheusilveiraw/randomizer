@@ -1,0 +1,23 @@
+
+p.text-justify { 
+    text-align: justify;
+    text-indent: 1em;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+a, a:visited { 
+   color: red; 
+}
+
+a:hover { 
+    color: tomato;
+}
+
+.radioBtn { 
+    height: 30px;
+}
+
+.form-check, .form-check-input, .form-check-label { 
+    cursor: pointer;
+}

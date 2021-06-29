@@ -1,0 +1,330 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Randomizer - App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body onresize="mudaBrand()" onload="mudaBrand()">
+    <!-- Esse programa deve ser capaz de escolher o próximo aluno a responder uma questão em sala, também deverá ser capaz de escolher a wh question que ele vai usar e qual auxiliar ele vai usar -->
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html" id="brand"> <ion-icon name="book-outline" size="large" class=""></ion-icon></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="app.html">App</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre.html">Sobre</a>
+                        </li>
+
+ 
+                        <li class="nav-item">
+                            <a class="nav-link" href="ultimos-sorteios.html">Últimos sorteios</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <article>
+        <section class="mt-5"> <!-- tituloo e sub titulo-->
+            <div class="container">
+                <h1 class="display-3 text-center mb-3">Sorteie!</h1>
+                <p class="text-center">Se você não sabe como usar o App clique <a href="">aqui</a>! </p>
+            </div>
+        </section>
+
+        <section> 
+            <div class="container mb-2">
+                <div class="row">
+                    <div class="col-12 mb-2">  <!-- coluna botões e nomes -->
+                        <div>     <!-- BOTÕES -->         
+                            <button class="btn btn-outline-danger" onclick="criarCampo()" id="criarCampoAluno">Criar campo</button>
+
+                            <button class="btn btn-danger" onclick="sortearTudo()" id="sortear">Sortear</button>
+                        </div>
+                        <div class="mb-2" id="alunos"> <!-- div de inputs de nome -->
+                            <div class="input-group mt-2 div-campo-btn">
+                                <input type="text" id="form" class="form-control form-aluno-entrada btn-delete" id="0" placeholder="Nome do aluno"> <button class="btn btn-danger" onclick="deletar(this)">X</button>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid gray;"><!-- só para por uma linha separando-->
+
+                        </div>
+                    </div>
+
+                    <div class="col-6"> <!-- inicio wh words-->
+                        <div>
+                            <strong>Wh Words</strong>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="what">
+                            <label class="form-check-label wh-word-labels" for="what">
+                              What
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="when">
+                            <label class="form-check-label wh-word-labels" for="when">
+                              When
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="where">
+                            <label class="form-check-label wh-word-labels" for="where">
+                              Where
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="why">
+                            <label class="form-check-label wh-word-labels" for="why">
+                              Why
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="which">
+                            <label class="form-check-label wh-word-labels" for="which">
+                              Which
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="who">
+                            <label class="form-check-label wh-word-labels" for="who">
+                              Who
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="how">
+                            <label class="form-check-label wh-word-labels" for="how">
+                              How
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="how-many">
+                            <label class="form-check-label wh-word-labels" for="how-many">
+                              How many
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="how-much">
+                            <label class="form-check-label wh-word-labels" for="how-much">
+                              How much
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="how-often">
+                            <label class="form-check-label wh-word-labels" for="how-often">
+                              How often
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input wh-word-check" type="checkbox" value="" id="how-many-times">
+                            <label class="form-check-label wh-word-labels" for="how-many-times">
+                              How many times
+                            </label>
+                        </div>
+                    </div> <!-- final da col da section wh-->
+
+                    <div class="col-6"> <!-- inicio col auxiliares-->
+                        <div>
+                            <strong>Auxiliares</strong>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="do">
+                            <label class="form-check-label aux-labels" for="do">
+                            Do
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="does">
+                            <label class="form-check-label aux-labels" for="does">
+                            Does
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="did">
+                            <label class="form-check-label aux-labels" for="did">
+                            Did
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="will">
+                            <label class="form-check-label aux-labels" for="will">
+                            Will
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="shall">
+                            <label class="form-check-label aux-labels" for="shall">
+                            Shall
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="can">
+                            <label class="form-check-label aux-labels" for="can">
+                            Can
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="could">
+                            <label class="form-check-label aux-labels" for="could">
+                            Could
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="may">
+                            <label class="form-check-label aux-labels" for="may">
+                            May
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="might">
+                            <label class="form-check-label aux-labels" for="might">
+                            Might
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="must">
+                            <label class="form-check-label aux-labels" for="must">
+                            Must
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="would">
+                            <label class="form-check-label aux-labels" for="would">
+                            Would
+                            </label>
+                        </div> 
+
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="to-be">
+                            <label class="form-check-label aux-labels" for="to-be">
+                            To be (any tense)
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="to-be-past">
+                            <label class="form-check-label aux-labels" for="to-be-past">
+                            To be - Past
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="to-be-future">
+                            <label class="form-check-label aux-labels" for="to-be-future">
+                            To be - Future
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="to-be-present">
+                            <label class="form-check-label aux-labels" for="to-be-present">
+                            To be - Present
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="there-be">
+                            <label class="form-check-label aux-labels" for="there-be">
+                            There to be (any tense)
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="there-be-past">
+                            <label class="form-check-label aux-labels" for="there-be-past">
+                            There to be - Past
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="there-be-future">
+                            <label class="form-check-label aux-labels" for="there-be-future">
+                            There to be - Future
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="there-be-present">
+                            <label class="form-check-label aux-labels" for="there-be-present">
+                            There to be - Present
+                            </label>
+                        </div> 
+                        <div class="form-check">
+                            <input class="form-check-input aux-check" type="checkbox" value="" id="have">
+                            <label class="form-check-label aux-labels" for="have">
+                            Have
+                            </label>
+                        </div> 
+                    </div> <!-- final verbo modal -->
+                    <div style="border-bottom: 1px solid gray;"><!-- só para por uma linha separando-->
+                    </div>
+    
+                </div><!-- fim da row-->
+            </div> <!-- fim do container -->
+            
+        </section>
+
+        <section> <!-- resultado -->
+            
+            <div class="container mb-2">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        
+            
+            <h1 class="display-3 mb-3">Resultado</h1>
+
+            <table class="table table-hover" id="resultado">
+                <thead>
+                    <td>#</td>
+                    <td>Aluno</td>
+                    <td>Wh Word</td>
+                    <td>Auxiliar</td>
+                </thead>
+
+                <tbody id="table_body">
+                    
+                </tbody>
+                    </div>
+                </div>
+            </div>
+            
+            </table>
+        </section>
+    </article>
+
+    <footer class="bg-secondary text-white mt-2">
+        <div class="container pt-1 pb-1 text-center">
+            <div> &#169;
+                Matheus Silveira</div>
+            <div><a href=""><ion-icon name="logo-github" size="large" id="git"></ion-icon></a></div>
+            
+        </div>
+    </footer>
+          
+
+    <script src="script/app.js"></script>
+
+    <!-- ionic -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
